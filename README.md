@@ -1,2 +1,0 @@
-# shiyu-cloud
-shiyu-cloud

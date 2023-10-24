@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: shiyu-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        group: shiyu-group
+        namespace: public
+      config:
+        server-addr: 127.0.0.1:8848
+        import-check:
+          enabled: false
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes: #网关的路由
+        - id: SERVICE-PROVIDER #可以随意写，但是最好和自己的服务名字对上
+          uri: lb://shiyu-provider #lb代表负载均衡，后面是对对应服务的服务名称
+          order: 1 #优先级
+          predicates:
+            - Path=/user/**  #匹配生产者路径，此处可以配置多个
+        - id: SERVICE-CONSUMER
+          uri: lb://shiyu-consumer
+          order: 1
+          predicates:
+            - Path=/consumer/** #匹配消费者路径
