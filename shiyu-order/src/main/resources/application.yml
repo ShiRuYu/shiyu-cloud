@@ -1,0 +1,18 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: shiyu-order
+  datasource:
+    #  MySQL5????url?com.mysql.jdbc.Driver?MySQL6?????com.mysql.cj.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.31.204:3306/shiyu
+    username: root
+    password: root
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  #???????resultType?????
+  type-aliases-package: com.shiyu.cloud.user.bean
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
