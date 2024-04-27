@@ -17,6 +17,10 @@
     <description>shiyu-product</description>
 
     <dependencies>
+        <dependency>
+            <groupId>com.shiyu.cloud</groupId>
+            <artifactId>shiyu-common-core</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

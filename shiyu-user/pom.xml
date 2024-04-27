@@ -19,7 +19,7 @@
     <dependencies>
         <dependency>
             <groupId>com.shiyu.cloud</groupId>
-            <artifactId>shiyu-common</artifactId>
+            <artifactId>shiyu-common-core</artifactId>
         </dependency>
     </dependencies>
 

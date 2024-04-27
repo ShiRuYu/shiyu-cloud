@@ -5,24 +5,19 @@
 
     <parent>
         <groupId>com.shiyu.cloud</groupId>
-        <artifactId>shiyu-cloud</artifactId>
+        <artifactId>shiyu-common</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
     <groupId>com.shiyu.cloud</groupId>
-    <artifactId>shiyu-order</artifactId>
+    <artifactId>shiyu-common-cache</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <name>shiyu-order</name>
-    <description>shiyu-order</description>
+    <name>shiyu-common-cache</name>
+    <description>shiyu-common-cache</description>
 
     <dependencies>
-        <dependency>
-            <groupId>com.shiyu.cloud</groupId>
-            <artifactId>shiyu-common-core</artifactId>
-        </dependency>
+
     </dependencies>
-
-
 
 </project>

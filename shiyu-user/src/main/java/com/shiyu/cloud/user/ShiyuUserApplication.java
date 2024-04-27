@@ -3,7 +3,7 @@ package com.shiyu.cloud.user;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = { "com.shiyu.cloud" })
 public class ShiyuUserApplication {
 
     public static void main(String[] args) {

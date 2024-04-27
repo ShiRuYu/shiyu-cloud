@@ -9,15 +9,14 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.shiyu.cloud</groupId>
     <artifactId>shiyu-common</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-    <name>shiyu-common</name>
     <description>shiyu-common</description>
 
-    <dependencies>
-
-    </dependencies>
+    <modules>
+        <module>shiyu-common-core</module>
+        <module>shiyu-common-database</module>
+    </modules>
 
 </project>

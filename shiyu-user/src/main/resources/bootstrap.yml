@@ -1,0 +1,21 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: @artifactId@
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_HOST:192.168.31.204}:${NACOS_PORT:8848}
+        username:
+        password:
+        namespace: 2af63c6f-6106-4140-8606-94ce92fee960
+        group: @nacos.group@
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        file-extension: yml
+        group: ${spring.cloud.nacos.discovery.group}
+        namespace: ${spring.cloud.nacos.discovery.namespace}
+        shared-configs:
+          - data-id: mysql.yml
+            group: ${spring.cloud.nacos.config.group}
