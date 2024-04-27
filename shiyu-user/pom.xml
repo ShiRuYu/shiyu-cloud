@@ -21,6 +21,10 @@
             <groupId>com.shiyu.cloud</groupId>
             <artifactId>shiyu-common-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.shiyu.cloud</groupId>
+            <artifactId>shiyu-common-rocketmq</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
