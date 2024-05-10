@@ -1,0 +1,5 @@
+com.shiyu.cloud.common.cache.RedisConfig
+com.shiyu.cloud.common.cache.rediscaffeine.CacheRedisCaffeineConfig
+com.shiyu.cloud.common.cache.caffeine.CacheCaffeineConfig
+com.shiyu.cloud.common.cache.redis.CacheRedisConfig
+com.shiyu.cloud.common.cache.CacheConfig

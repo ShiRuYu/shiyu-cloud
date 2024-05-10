@@ -15,8 +15,10 @@
     <description>shiyu-common</description>
 
     <modules>
+        <module>shiyu-common-cache</module>
         <module>shiyu-common-core</module>
         <module>shiyu-common-database</module>
+        <module>shiyu-common-rocketmq</module>
     </modules>
 
 </project>

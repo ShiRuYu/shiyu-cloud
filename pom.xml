@@ -29,13 +29,14 @@
         <spring-cloud.version>2023.0.1</spring-cloud.version>
         <spring-cloud-alibaba.version>2022.0.0.0</spring-cloud-alibaba.version>
 
-        <hutool-version>5.8.22</hutool-version>
+        <hutool.version>5.8.22</hutool.version>
         <mybatis-spring-boot-starter.version>3.0.3</mybatis-spring-boot-starter.version>
         <mysql-connector-j.version>8.3.0</mysql-connector-j.version>
         <druid-spring-boot-3-starter.version>1.2.21</druid-spring-boot-3-starter.version>
 
         <elasticsearch.version>7.17.5</elasticsearch.version>
         <minio.version>8.2.2</minio.version>
+        <guava.version>32.1.1-jre</guava.version>
         <rocketmq-springboot.version>2.2.3</rocketmq-springboot.version>
 
     </properties>
@@ -85,9 +86,14 @@
             <dependency>
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
-                <version>${hutool-version}</version>
+                <version>${hutool.version}</version>
             </dependency>
-
+            <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
             <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
             <dependency>
                 <groupId>com.mysql</groupId>
