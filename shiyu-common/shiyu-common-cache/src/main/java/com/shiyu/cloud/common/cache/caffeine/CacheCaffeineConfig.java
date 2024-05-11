@@ -3,14 +3,14 @@ package com.shiyu.cloud.common.cache.caffeine;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.shiyu.cloud.common.cache.CacheConstants;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.caffeine.CaffeineCacheManager;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.concurrent.TimeUnit;
 
-@AutoConfiguration
+@Configuration
 @EnableCaching
 public class CacheCaffeineConfig {
 

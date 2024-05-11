@@ -1,21 +1,22 @@
 package com.shiyu.cloud.common.cache.rediscaffeine;
 
-import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.listener.ChannelTopic;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 
 import java.util.Objects;
 
-@AutoConfiguration
+@Configuration
 @EnableCaching
 public class CacheRedisCaffeineConfig {
 
     @Bean
-    @ConditionalOnBean(RedisTemplate.class)
+    @Primary
     public CacheRedisCaffeineManager cacheRedisCaffeineManager(RedisTemplate<Object, Object> redisTemplate) {
         return new CacheRedisCaffeineManager(redisTemplate);
     }

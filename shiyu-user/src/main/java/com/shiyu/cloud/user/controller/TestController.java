@@ -18,7 +18,7 @@ public class TestController {
     private Map<String,CacheManager> cacheManagers;
 
     @GetMapping("b")
-    @Cacheable(key = "'cache_user_id_' + #id", value = "userIdCache")
+    @Cacheable(key = "'cache_user_id_' + #id", value = "userIdCachew4er")
     public String b(String id) {
         System.out.println("222222222222");
         return "1111111";
