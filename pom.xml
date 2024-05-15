@@ -14,6 +14,7 @@
 
     <modules>
         <module>shiyu-common</module>
+        <module>shiyu-feign</module>
         <module>shiyu-gateway</module>
         <module>shiyu-user</module>
         <module>shiyu-product</module>
@@ -149,6 +150,22 @@
 
             <dependency>
                 <groupId>com.shiyu.cloud</groupId>
+                <artifactId>shiyu-feign-user</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.shiyu.cloud</groupId>
+                <artifactId>shiyu-feign-order</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.shiyu.cloud</groupId>
+                <artifactId>shiyu-feign-product</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.shiyu.cloud</groupId>
                 <artifactId>shiyu-common-core</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
@@ -167,6 +184,7 @@
                 <artifactId>shiyu-common-rocketmq</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
+
             <dependency>
                 <groupId>com.shiyu.cloud</groupId>
                 <artifactId>shiyu-gateway</artifactId>
@@ -189,7 +207,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
 
     <build>
         <plugins>
@@ -289,4 +306,5 @@
             </properties>
         </profile>
     </profiles>
+
 </project>
