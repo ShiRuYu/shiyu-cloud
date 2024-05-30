@@ -4,6 +4,10 @@ spring:
   application:
     name: @artifactId@
   cloud:
+    #inetutils:
+      #ignoredInterfaces: ["TAP-Windows Adapter V9"]
+      #preferred-networks: 192.168.0.116
+      #use-only-site-local-interfaces: true
     nacos:
       discovery:
         server-addr: ${NACOS_HOST:192.168.0.113}:${NACOS_PORT:8848}
