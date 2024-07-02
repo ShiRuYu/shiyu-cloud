@@ -5,16 +5,18 @@
 <configuration monitorInterval="30">
     <!--定义属性，在下方方便维护引用-->
     <properties>
+        <!--项目名-->
+        <property name="serverName">shiyu-cloud-order</property>
         <!--当天文件保存目录-->
-        <property name="logDir">./logs</property>
+        <property name="logDir">./logs/${serverName}</property>
         <!--历史文件保存目录-->
-        <property name="historyLogDir">./logs/history</property>
+        <property name="historyLogDir">${logDir}/history</property>
         <!--如果当天日志文件大于100MB，则存档-->
         <property name="splitSize">100MB</property>
         <!--文件保存个数，这里的30说明可保留30个，即30天-->
         <property name="fileCount">30</property>
         <!--输出格式-->
-        <property name="logPattern">%d{yyyy-MM-dd HH:mm:ss.SSS} => [%thread] => [%X{traceId}] %-5level %logger{50}:(%line) - %msg%n</property>
+        <property name="logPattern">%d{yyyy-MM-dd HH:mm:ss.SSS} => [%thread] => [${serverName}|%X{traceId}|%X{spanId}] %-5level %logger{50}:(%line) - %msg%n</property>
     </properties>
 
     <!--先定义所有的 appender 附加器-->

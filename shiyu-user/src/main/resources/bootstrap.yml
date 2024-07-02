@@ -27,3 +27,5 @@ spring:
             group: ${spring.cloud.nacos.config.group}
           - data-id: redis.yml
             group: ${spring.cloud.nacos.config.group}
+          - data-id: tracking.yml
+            group: ${spring.cloud.nacos.config.group}
