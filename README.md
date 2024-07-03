@@ -1,5 +1,18 @@
-项目技术栈 JDK17、Spring Cloud Alibaba、Nacos、Redis、Caffeine、
+# 项目
+## 技术栈 
+- JDK17
+- Spring Cloud Alibaba
+- Mysql8 数据库
+- Mybatis ORM框架
+- Nacos 服务中心/配置中心
+- Redis 缓存
+- Caffeine 缓存
+- Micrometer Tracing+Zipkin 链路追踪
+- Gateway 网关
+- RocketMQ 消息中间件
+- 
 
+## 服务结构定义
 - PO（Persistent Object）：永久对象，数据库字段一一对应的对象。
 - VO（View Object）：显示层对象，通常是 Web 向模板渲染引擎层传输的对象。
 - DTO（Data Transfer Object）：数据传输对象，前端像后台/服务间进行传输的对象，类似于param。
@@ -13,8 +26,7 @@
     - 3） 与 DAO 层交互，对多个 DAO 的组合复用。
 - Mapper持久层：数据访问层，与底层 MySQL进行数据交互。
 
-# 目录结构
-
+###  目录结构
 ```
 shiyu-cloud
 ├─shiyu-common -- 公共模块
