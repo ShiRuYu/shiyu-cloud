@@ -1,10 +1,17 @@
 package com.shiyu.cloud.common.cache.rediscaffeine;
 
+import lombok.Getter;
+import lombok.Setter;
+
+import java.io.Serial;
 import java.io.Serializable;
 
+@Setter
+@Getter
 public class CacheMessage implements Serializable {
 
     /** */
+    @Serial
     private static final long serialVersionUID = 5987219310442078193L;
 
     private String cacheName;
@@ -15,19 +22,4 @@ public class CacheMessage implements Serializable {
         this.key = key;
     }
 
-    public String getCacheName() {
-        return cacheName;
-    }
-
-    public void setCacheName(String cacheName) {
-        this.cacheName = cacheName;
-    }
-
-    public Object getKey() {
-        return key;
-    }
-
-    public void setKey(Object key) {
-        this.key = key;
-    }
 }

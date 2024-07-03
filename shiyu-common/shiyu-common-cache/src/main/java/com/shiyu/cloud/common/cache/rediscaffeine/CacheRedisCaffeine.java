@@ -23,7 +23,7 @@ public class CacheRedisCaffeine extends AbstractValueAdaptingCache {
     private Cache<Object, Object> caffeineCache;
     private String cachePrefix;
     private long defaultExpiration = 0;
-    private Map<String, Long> expires = Maps.newHashMap();
+    private final Map<String, Long> expires = Maps.newHashMap();
     private String topic = "cache:redis:caffeine:topic";
     protected CacheRedisCaffeine(boolean allowNullValues) {
         super(allowNullValues);
@@ -70,8 +70,7 @@ public class CacheRedisCaffeine extends AbstractValueAdaptingCache {
             try {
                 Class<?> c = Class.forName("org.springframework.cache.Cache$ValueRetrievalException");
                 Constructor<?> constructor = c.getConstructor(Object.class, Callable.class, Throwable.class);
-                RuntimeException exception = (RuntimeException) constructor.newInstance(key, valueLoader, e.getCause());
-                throw exception;
+                throw (RuntimeException) constructor.newInstance(key, valueLoader, e.getCause());
             } catch (Exception e1) {
                 throw new IllegalStateException(e1);
             }
@@ -169,7 +168,7 @@ public class CacheRedisCaffeine extends AbstractValueAdaptingCache {
     private long getExpire() {
         long expire = defaultExpiration;
         Long cacheNameExpire = expires.get(this.name);
-        return cacheNameExpire == null ? expire : cacheNameExpire.longValue();
+        return cacheNameExpire == null ? expire : cacheNameExpire;
     }
 
     /**

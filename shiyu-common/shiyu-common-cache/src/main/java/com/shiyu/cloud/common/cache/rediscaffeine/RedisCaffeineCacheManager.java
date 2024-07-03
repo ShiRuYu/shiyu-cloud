@@ -1,46 +1,43 @@
 package com.shiyu.cloud.common.cache.rediscaffeine;
 
-import java.util.Collection;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-
+import com.github.benmanes.caffeine.cache.Caffeine;
+import jakarta.annotation.Nonnull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 import org.springframework.data.redis.core.RedisTemplate;
 
-import com.github.benmanes.caffeine.cache.Caffeine;
+import java.util.Collection;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public class CacheRedisCaffeineManager implements CacheManager {
+public class RedisCaffeineCacheManager implements CacheManager {
 
-    private final Logger logger = LoggerFactory.getLogger(CacheRedisCaffeineManager.class);
+    private final Logger logger = LoggerFactory.getLogger(RedisCaffeineCacheManager.class);
 
-    private ConcurrentMap<String, Cache> cacheMap = new ConcurrentHashMap<String, Cache>();
 
-    private RedisTemplate<Object, Object> redisTemplate;
+    private final RedisTemplate<Object, Object> redisTemplate;
 
-    private boolean dynamic = true;
+    private final Map<String, Cache> cacheMap = new ConcurrentHashMap<>(16);
 
-    private Set<String> cacheNames;
+    private final Collection<String> cacheNames = new CopyOnWriteArrayList<>();
 
-    public CacheRedisCaffeineManager(RedisTemplate<Object, Object> redisTemplate) {
+    public RedisCaffeineCacheManager(RedisTemplate<Object, Object> redisTemplate) {
         super();
         this.redisTemplate = redisTemplate;
     }
 
     @Override
-    public Cache getCache(String name) {
+    public Cache getCache(@Nonnull String name) {
         Cache cache = cacheMap.get(name);
         if(cache != null) {
             return cache;
         }
-        if(!dynamic && !cacheNames.contains(name)) {
-            return cache;
-        }
 
         cache = new CacheRedisCaffeine(name, redisTemplate, caffeineCache());
+        cacheNames.add(name);
         Cache oldCache = cacheMap.putIfAbsent(name, cache);
         logger.debug("create cache instance, the cache name is : {}", name);
         return oldCache == null ? cache : oldCache;
@@ -52,6 +49,7 @@ public class CacheRedisCaffeineManager implements CacheManager {
     }
 
     @Override
+    @Nonnull
     public Collection<String> getCacheNames() {
         return this.cacheNames;
     }

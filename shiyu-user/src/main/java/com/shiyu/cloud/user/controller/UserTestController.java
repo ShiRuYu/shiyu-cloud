@@ -6,7 +6,6 @@ import com.shiyu.cloud.feign.user.UserTestFeignClient;
 import com.shiyu.cloud.user.log.LoggerUtil;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController

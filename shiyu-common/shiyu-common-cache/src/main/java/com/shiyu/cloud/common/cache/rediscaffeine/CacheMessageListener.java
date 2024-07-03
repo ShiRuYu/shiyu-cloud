@@ -7,19 +7,20 @@ import org.springframework.data.redis.core.RedisTemplate;
 
 public class CacheMessageListener implements MessageListener {
     private final Logger logger = LoggerFactory.getLogger(CacheMessageListener.class);
-    private RedisTemplate<Object, Object> redisTemplate;
-    private CacheRedisCaffeineManager cacheRedisCaffeineManager;
+    private final RedisTemplate<Object, Object> redisTemplate;
+    private final RedisCaffeineCacheManager redisCaffeineCacheManager;
     public CacheMessageListener(RedisTemplate<Object, Object> redisTemplate,
-                                CacheRedisCaffeineManager cacheRedisCaffeineManager) {
+                                RedisCaffeineCacheManager redisCaffeineCacheManager) {
         super();
         this.redisTemplate = redisTemplate;
-        this.cacheRedisCaffeineManager = cacheRedisCaffeineManager;
+        this.redisCaffeineCacheManager = redisCaffeineCacheManager;
     }
 
     @Override
     public void onMessage(Message message, byte[] pattern) {
         CacheMessage cacheMessage = (CacheMessage) redisTemplate.getValueSerializer().deserialize(message.getBody());
+        assert cacheMessage != null;
         logger.debug("recevice a redis topic message, clear local cache, the cacheName is {}, the key is {}", cacheMessage.getCacheName(), cacheMessage.getKey());
-        cacheRedisCaffeineManager.clearLocal(cacheMessage.getCacheName(), cacheMessage.getKey());
+        redisCaffeineCacheManager.clearLocal(cacheMessage.getCacheName(), cacheMessage.getKey());
     }
 }

@@ -39,6 +39,10 @@
             <groupId>com.shiyu.cloud</groupId>
             <artifactId>shiyu-common-rocketmq</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.shiyu.cloud</groupId>
+            <artifactId>shiyu-common-cache</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
