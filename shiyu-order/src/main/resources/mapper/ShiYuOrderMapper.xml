@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyu.cloud.order.mapper.ShiYuOrderMapper">
+
+    <resultMap type="com.shiyu.cloud.order.model.ShiYuOrder" id="ShiYuOrderMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="orderNo" column="order_no" jdbcType="INTEGER"/>
+        <result property="shopId" column="shop_id" jdbcType="INTEGER"/>
+        <result property="orderStatus" column="order_status" jdbcType="INTEGER"/>
+        <result property="productCount" column="product_count" jdbcType="INTEGER"/>
+        <result property="productAmountTotal" column="product_amount_total" jdbcType="INTEGER"/>
+        <result property="orderAmountTotal" column="order_amount_total" jdbcType="NUMERIC"/>
+        <result property="logisticsFee" column="logistics_fee" jdbcType="NUMERIC"/>
+        <result property="addressId" column="address_id" jdbcType="INTEGER"/>
+        <result property="orderlogisticsId" column="orderlogistics_id" jdbcType="INTEGER"/>
+        <result property="payChannel" column="pay_channel" jdbcType="VARCHAR"/>
+        <result property="outTradeNo" column="out_trade_no" jdbcType="VARCHAR"/>
+        <result property="userId" column="user_id" jdbcType="VARCHAR"/>
+        <result property="remork" column="remork" jdbcType="VARCHAR"/>
+        <result property="payTime" column="pay_time" jdbcType="TIMESTAMP"/>
+        <result property="deliveryTime" column="delivery_time" jdbcType="TIMESTAMP"/>
+        <result property="orderSettlementTime" column="order_settlement_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="ShiYuOrderMap">
+        select
+id, create_time, order_no, shop_id, order_status, product_count, product_amount_total, order_amount_total, logistics_fee, address_id, orderlogistics_id, pay_channel, out_trade_no, user_id, remork, pay_time, delivery_time, order_settlement_time
+        from shi_yu_order
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAll" resultMap="ShiYuOrderMap">
+        select
+id, create_time, order_no, shop_id, order_status, product_count, product_amount_total, order_amount_total, logistics_fee, address_id, orderlogistics_id, pay_channel, out_trade_no, user_id, remork, pay_time, delivery_time, order_settlement_time
+        from shi_yu_order
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="orderNo != null">
+                and order_no = #{orderNo}
+            </if>
+            <if test="shopId != null">
+                and shop_id = #{shopId}
+            </if>
+            <if test="orderStatus != null">
+                and order_status = #{orderStatus}
+            </if>
+            <if test="productCount != null">
+                and product_count = #{productCount}
+            </if>
+            <if test="productAmountTotal != null">
+                and product_amount_total = #{productAmountTotal}
+            </if>
+            <if test="orderAmountTotal != null">
+                and order_amount_total = #{orderAmountTotal}
+            </if>
+            <if test="logisticsFee != null">
+                and logistics_fee = #{logisticsFee}
+            </if>
+            <if test="addressId != null">
+                and address_id = #{addressId}
+            </if>
+            <if test="orderlogisticsId != null">
+                and orderlogistics_id = #{orderlogisticsId}
+            </if>
+            <if test="payChannel != null and payChannel != ''">
+                and pay_channel = #{payChannel}
+            </if>
+            <if test="outTradeNo != null and outTradeNo != ''">
+                and out_trade_no = #{outTradeNo}
+            </if>
+            <if test="userId != null and userId != ''">
+                and user_id = #{userId}
+            </if>
+            <if test="remork != null and remork != ''">
+                and remork = #{remork}
+            </if>
+            <if test="payTime != null">
+                and pay_time = #{payTime}
+            </if>
+            <if test="deliveryTime != null">
+                and delivery_time = #{deliveryTime}
+            </if>
+            <if test="orderSettlementTime != null">
+                and order_settlement_time = #{orderSettlementTime}
+            </if>
+        </where>
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(*)
+        from shi_yu_order
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="orderNo != null">
+                and order_no = #{orderNo}
+            </if>
+            <if test="shopId != null">
+                and shop_id = #{shopId}
+            </if>
+            <if test="orderStatus != null">
+                and order_status = #{orderStatus}
+            </if>
+            <if test="productCount != null">
+                and product_count = #{productCount}
+            </if>
+            <if test="productAmountTotal != null">
+                and product_amount_total = #{productAmountTotal}
+            </if>
+            <if test="orderAmountTotal != null">
+                and order_amount_total = #{orderAmountTotal}
+            </if>
+            <if test="logisticsFee != null">
+                and logistics_fee = #{logisticsFee}
+            </if>
+            <if test="addressId != null">
+                and address_id = #{addressId}
+            </if>
+            <if test="orderlogisticsId != null">
+                and orderlogistics_id = #{orderlogisticsId}
+            </if>
+            <if test="payChannel != null and payChannel != ''">
+                and pay_channel = #{payChannel}
+            </if>
+            <if test="outTradeNo != null and outTradeNo != ''">
+                and out_trade_no = #{outTradeNo}
+            </if>
+            <if test="userId != null and userId != ''">
+                and user_id = #{userId}
+            </if>
+            <if test="remork != null and remork != ''">
+                and remork = #{remork}
+            </if>
+            <if test="payTime != null">
+                and pay_time = #{payTime}
+            </if>
+            <if test="deliveryTime != null">
+                and delivery_time = #{deliveryTime}
+            </if>
+            <if test="orderSettlementTime != null">
+                and order_settlement_time = #{orderSettlementTime}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into shi_yu_order(create_timeorder_noshop_idorder_statusproduct_countproduct_amount_totalorder_amount_totallogistics_feeaddress_idorderlogistics_idpay_channelout_trade_nouser_idremorkpay_timedelivery_timeorder_settlement_time)
+        values (#{createTime}#{orderNo}#{shopId}#{orderStatus}#{productCount}#{productAmountTotal}#{orderAmountTotal}#{logisticsFee}#{addressId}#{orderlogisticsId}#{payChannel}#{outTradeNo}#{userId}#{remork}#{payTime}#{deliveryTime}#{orderSettlementTime})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into shi_yu_order(create_timeorder_noshop_idorder_statusproduct_countproduct_amount_totalorder_amount_totallogistics_feeaddress_idorderlogistics_idpay_channelout_trade_nouser_idremorkpay_timedelivery_timeorder_settlement_time)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.createTime}#{entity.orderNo}#{entity.shopId}#{entity.orderStatus}#{entity.productCount}#{entity.productAmountTotal}#{entity.orderAmountTotal}#{entity.logisticsFee}#{entity.addressId}#{entity.orderlogisticsId}#{entity.payChannel}#{entity.outTradeNo}#{entity.userId}#{entity.remork}#{entity.payTime}#{entity.deliveryTime}#{entity.orderSettlementTime})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into shi_yu_order(create_timeorder_noshop_idorder_statusproduct_countproduct_amount_totalorder_amount_totallogistics_feeaddress_idorderlogistics_idpay_channelout_trade_nouser_idremorkpay_timedelivery_timeorder_settlement_time)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.createTime}#{entity.orderNo}#{entity.shopId}#{entity.orderStatus}#{entity.productCount}#{entity.productAmountTotal}#{entity.orderAmountTotal}#{entity.logisticsFee}#{entity.addressId}#{entity.orderlogisticsId}#{entity.payChannel}#{entity.outTradeNo}#{entity.userId}#{entity.remork}#{entity.payTime}#{entity.deliveryTime}#{entity.orderSettlementTime})
+        </foreach>
+        on duplicate key update
+create_time = values(create_time)order_no = values(order_no)shop_id = values(shop_id)order_status = values(order_status)product_count = values(product_count)product_amount_total = values(product_amount_total)order_amount_total = values(order_amount_total)logistics_fee = values(logistics_fee)address_id = values(address_id)orderlogistics_id = values(orderlogistics_id)pay_channel = values(pay_channel)out_trade_no = values(out_trade_no)user_id = values(user_id)remork = values(remork)pay_time = values(pay_time)delivery_time = values(delivery_time)order_settlement_time = values(order_settlement_time)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update shi_yu_order
+        <set>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="orderNo != null">
+                order_no = #{orderNo},
+            </if>
+            <if test="shopId != null">
+                shop_id = #{shopId},
+            </if>
+            <if test="orderStatus != null">
+                order_status = #{orderStatus},
+            </if>
+            <if test="productCount != null">
+                product_count = #{productCount},
+            </if>
+            <if test="productAmountTotal != null">
+                product_amount_total = #{productAmountTotal},
+            </if>
+            <if test="orderAmountTotal != null">
+                order_amount_total = #{orderAmountTotal},
+            </if>
+            <if test="logisticsFee != null">
+                logistics_fee = #{logisticsFee},
+            </if>
+            <if test="addressId != null">
+                address_id = #{addressId},
+            </if>
+            <if test="orderlogisticsId != null">
+                orderlogistics_id = #{orderlogisticsId},
+            </if>
+            <if test="payChannel != null and payChannel != ''">
+                pay_channel = #{payChannel},
+            </if>
+            <if test="outTradeNo != null and outTradeNo != ''">
+                out_trade_no = #{outTradeNo},
+            </if>
+            <if test="userId != null and userId != ''">
+                user_id = #{userId},
+            </if>
+            <if test="remork != null and remork != ''">
+                remork = #{remork},
+            </if>
+            <if test="payTime != null">
+                pay_time = #{payTime},
+            </if>
+            <if test="deliveryTime != null">
+                delivery_time = #{deliveryTime},
+            </if>
+            <if test="orderSettlementTime != null">
+                order_settlement_time = #{orderSettlementTime},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from shi_yu_order where id = #{id}
+    </delete>
+
+</mapper>
+
+

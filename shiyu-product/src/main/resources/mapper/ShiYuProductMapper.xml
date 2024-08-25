@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shiyu.cloud.product.mapper.ShiYuProductMapper">
+
+    <resultMap type="com.shiyu.cloud.product.model.ShiYuProduct" id="ShiYuProductMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="marque" column="marque" jdbcType="VARCHAR"/>
+        <result property="barcode" column="barcode" jdbcType="VARCHAR"/>
+        <result property="typeId" column="type_id" jdbcType="INTEGER"/>
+        <result property="categoryId" column="category_id" jdbcType="INTEGER"/>
+        <result property="brandId" column="brand_id" jdbcType="INTEGER"/>
+        <result property="price" column="price" jdbcType="NUMERIC"/>
+        <result property="marketPrice" column="market_price" jdbcType="NUMERIC"/>
+        <result property="costPrice" column="cost_price" jdbcType="NUMERIC"/>
+        <result property="stock" column="stock" jdbcType="INTEGER"/>
+        <result property="warningStock" column="warning_stock" jdbcType="INTEGER"/>
+        <result property="integral" column="integral" jdbcType="NUMERIC"/>
+        <result property="pictureUrl" column="picture_url" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+        <result property="delStatus" column="del_status" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="ShiYuProductMap">
+        select
+id, create_time, update_time, name, marque, barcode, type_id, category_id, brand_id, price, market_price, cost_price, stock, warning_stock, integral, picture_url, status, del_status
+        from shi_yu_product
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAll" resultMap="ShiYuProductMap">
+        select
+id, create_time, update_time, name, marque, barcode, type_id, category_id, brand_id, price, market_price, cost_price, stock, warning_stock, integral, picture_url, status, del_status
+        from shi_yu_product
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="marque != null and marque != ''">
+                and marque = #{marque}
+            </if>
+            <if test="barcode != null and barcode != ''">
+                and barcode = #{barcode}
+            </if>
+            <if test="typeId != null">
+                and type_id = #{typeId}
+            </if>
+            <if test="categoryId != null">
+                and category_id = #{categoryId}
+            </if>
+            <if test="brandId != null">
+                and brand_id = #{brandId}
+            </if>
+            <if test="price != null">
+                and price = #{price}
+            </if>
+            <if test="marketPrice != null">
+                and market_price = #{marketPrice}
+            </if>
+            <if test="costPrice != null">
+                and cost_price = #{costPrice}
+            </if>
+            <if test="stock != null">
+                and stock = #{stock}
+            </if>
+            <if test="warningStock != null">
+                and warning_stock = #{warningStock}
+            </if>
+            <if test="integral != null">
+                and integral = #{integral}
+            </if>
+            <if test="pictureUrl != null and pictureUrl != ''">
+                and picture_url = #{pictureUrl}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="delStatus != null">
+                and del_status = #{delStatus}
+            </if>
+        </where>
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(*)
+        from shi_yu_product
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="marque != null and marque != ''">
+                and marque = #{marque}
+            </if>
+            <if test="barcode != null and barcode != ''">
+                and barcode = #{barcode}
+            </if>
+            <if test="typeId != null">
+                and type_id = #{typeId}
+            </if>
+            <if test="categoryId != null">
+                and category_id = #{categoryId}
+            </if>
+            <if test="brandId != null">
+                and brand_id = #{brandId}
+            </if>
+            <if test="price != null">
+                and price = #{price}
+            </if>
+            <if test="marketPrice != null">
+                and market_price = #{marketPrice}
+            </if>
+            <if test="costPrice != null">
+                and cost_price = #{costPrice}
+            </if>
+            <if test="stock != null">
+                and stock = #{stock}
+            </if>
+            <if test="warningStock != null">
+                and warning_stock = #{warningStock}
+            </if>
+            <if test="integral != null">
+                and integral = #{integral}
+            </if>
+            <if test="pictureUrl != null and pictureUrl != ''">
+                and picture_url = #{pictureUrl}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="delStatus != null">
+                and del_status = #{delStatus}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into shi_yu_product(create_timeupdate_timenamemarquebarcodetype_idcategory_idbrand_idpricemarket_pricecost_pricestockwarning_stockintegralpicture_urlstatusdel_status)
+        values (#{createTime}#{updateTime}#{name}#{marque}#{barcode}#{typeId}#{categoryId}#{brandId}#{price}#{marketPrice}#{costPrice}#{stock}#{warningStock}#{integral}#{pictureUrl}#{status}#{delStatus})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into shi_yu_product(create_timeupdate_timenamemarquebarcodetype_idcategory_idbrand_idpricemarket_pricecost_pricestockwarning_stockintegralpicture_urlstatusdel_status)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.createTime}#{entity.updateTime}#{entity.name}#{entity.marque}#{entity.barcode}#{entity.typeId}#{entity.categoryId}#{entity.brandId}#{entity.price}#{entity.marketPrice}#{entity.costPrice}#{entity.stock}#{entity.warningStock}#{entity.integral}#{entity.pictureUrl}#{entity.status}#{entity.delStatus})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into shi_yu_product(create_timeupdate_timenamemarquebarcodetype_idcategory_idbrand_idpricemarket_pricecost_pricestockwarning_stockintegralpicture_urlstatusdel_status)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.createTime}#{entity.updateTime}#{entity.name}#{entity.marque}#{entity.barcode}#{entity.typeId}#{entity.categoryId}#{entity.brandId}#{entity.price}#{entity.marketPrice}#{entity.costPrice}#{entity.stock}#{entity.warningStock}#{entity.integral}#{entity.pictureUrl}#{entity.status}#{entity.delStatus})
+        </foreach>
+        on duplicate key update
+create_time = values(create_time)update_time = values(update_time)name = values(name)marque = values(marque)barcode = values(barcode)type_id = values(type_id)category_id = values(category_id)brand_id = values(brand_id)price = values(price)market_price = values(market_price)cost_price = values(cost_price)stock = values(stock)warning_stock = values(warning_stock)integral = values(integral)picture_url = values(picture_url)status = values(status)del_status = values(del_status)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update shi_yu_product
+        <set>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="marque != null and marque != ''">
+                marque = #{marque},
+            </if>
+            <if test="barcode != null and barcode != ''">
+                barcode = #{barcode},
+            </if>
+            <if test="typeId != null">
+                type_id = #{typeId},
+            </if>
+            <if test="categoryId != null">
+                category_id = #{categoryId},
+            </if>
+            <if test="brandId != null">
+                brand_id = #{brandId},
+            </if>
+            <if test="price != null">
+                price = #{price},
+            </if>
+            <if test="marketPrice != null">
+                market_price = #{marketPrice},
+            </if>
+            <if test="costPrice != null">
+                cost_price = #{costPrice},
+            </if>
+            <if test="stock != null">
+                stock = #{stock},
+            </if>
+            <if test="warningStock != null">
+                warning_stock = #{warningStock},
+            </if>
+            <if test="integral != null">
+                integral = #{integral},
+            </if>
+            <if test="pictureUrl != null and pictureUrl != ''">
+                picture_url = #{pictureUrl},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="delStatus != null">
+                del_status = #{delStatus},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from shi_yu_product where id = #{id}
+    </delete>
+
+</mapper>
+
+
