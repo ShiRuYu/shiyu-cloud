@@ -9,10 +9,10 @@ import java.util.List;
 
 @Component
 @RocketMQMessageListener(topic = RocketMqConstant.STOCK_UNLOCK_TOPIC,consumerGroup = RocketMqConstant.STOCK_UNLOCK_TOPIC)
-public class StockUnlockConsumer implements RocketMQListener<List<String>> {
+public class StockUnlockConsumer implements RocketMQListener<List<Integer>> {
 
     @Override
-    public void onMessage(List<String> orderIds) {
+    public void onMessage(List<Integer> orderIds) {
         System.out.println(orderIds.toString());
     }
 }
