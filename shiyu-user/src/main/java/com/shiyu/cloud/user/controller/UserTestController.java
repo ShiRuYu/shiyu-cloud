@@ -39,7 +39,7 @@ public class UserTestController implements UserTestFeignClient {
 
     @GetMapping("test/send")
     public String send(){
-        SendResult sendResult = stockMqTemplate.syncSend(RocketMqConstant.STOCK_UNLOCK_TOPIC, new GenericMessage<>(Lists.newArrayList(1, 2, 3)), RocketMqConstant.TIMEOUT, RocketMqConstant.CANCEL_ORDER_DELAY_LEVEL);
+        SendResult sendResult = stockMqTemplate.syncSend(RocketMqConstant.SHIYU_DEFAULT_TOPIC, new GenericMessage<>(Lists.newArrayList(1, 2, 3)), RocketMqConstant.TIMEOUT, RocketMqConstant.CANCEL_ORDER_DELAY_LEVEL);
         return JSONUtil.toJsonStr(sendResult);
     }
 }

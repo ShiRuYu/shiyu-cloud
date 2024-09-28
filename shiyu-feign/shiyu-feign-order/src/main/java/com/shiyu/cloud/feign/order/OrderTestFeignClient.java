@@ -7,5 +7,5 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(value = "shiyu-order",contextId = "testOrder")
 public interface OrderTestFeignClient {
     @GetMapping("testOrder")
-    String testOrder(@RequestParam String id);
+    String testOrder(@RequestParam("id") String id);
 }

@@ -9,7 +9,6 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.shiyu.cloud</groupId>
     <artifactId>shiyu-user</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
@@ -18,6 +17,14 @@
 
     <dependencies>
 
+        <dependency>
+            <groupId>com.shiyu.cloud</groupId>
+            <artifactId>shiyu-common-cloud</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.shiyu.cloud</groupId>
+            <artifactId>shiyu-common-web</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.shiyu.cloud</groupId>
             <artifactId>shiyu-feign-user</artifactId>
@@ -35,6 +42,11 @@
             <groupId>com.shiyu.cloud</groupId>
             <artifactId>shiyu-common-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.shiyu.cloud</groupId>
+            <artifactId>shiyu-common-database</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>com.shiyu.cloud</groupId>
             <artifactId>shiyu-common-rocketmq</artifactId>

@@ -5,12 +5,15 @@ import com.github.benmanes.caffeine.cache.Caffeine;
 import com.google.common.collect.Maps;
 import com.shiyu.cloud.common.cache.rediscaffeine.CacheMessageListener;
 import com.shiyu.cloud.common.cache.rediscaffeine.RedisCaffeineCacheManager;
+import com.shiyu.cloud.common.cache.rediscaffeine.ShiYuRedisCaffeineCacheConfig;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.checkerframework.checker.nullness.qual.Nullable;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.caffeine.CaffeineCacheManager;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
@@ -27,9 +30,10 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
-@Configuration
+@AutoConfiguration
 @Slf4j
-public class CacheManagerConfig {
+@EnableCaching
+public class ShiYuCacheManagerConfig {
     @Resource
     private RedisConnectionFactory redisConnectionFactory;
 
@@ -38,7 +42,7 @@ public class CacheManagerConfig {
      */
     @Bean
     @Primary
-    public CaffeineCacheManager caffeineCacheManager() {
+    public CaffeineCacheManager shiyuCaffeineCacheManager() {
         CaffeineCacheManager caffeineCacheManager = new CaffeineCacheManager();
         Cache<Object, Object> build = Caffeine.newBuilder().recordStats()
                 .expireAfterWrite(60, TimeUnit.SECONDS)
@@ -53,7 +57,7 @@ public class CacheManagerConfig {
      */
     @Bean
     @DependsOn(value = {"redisTemplate"})
-    public RedisCacheManager redisCacheManager() {
+    public RedisCacheManager shiyuRedisCacheManager() {
         GenericJackson2JsonRedisSerializer genericJackson2JsonRedisSerializer = new GenericJackson2JsonRedisSerializer();
         StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
 
@@ -78,7 +82,7 @@ public class CacheManagerConfig {
     }
 
     @Bean
-    @DependsOn(value = {"redisCacheManager"})
+    @DependsOn(value = {"shiyuRedisCacheManager"})
     public RedisCaffeineCacheManager redisCaffeineCacheManager(RedisTemplate<Object, Object> redisTemplate) {
         return new RedisCaffeineCacheManager(redisTemplate);
     }
@@ -92,6 +96,12 @@ public class CacheManagerConfig {
         CacheMessageListener cacheMessageListener = new CacheMessageListener(redisTemplate, redisCaffeineCacheManager);
         redisMessageListenerContainer.addMessageListener(cacheMessageListener, new ChannelTopic("redis-cache"));
         return redisMessageListenerContainer;
+    }
+
+    @Bean
+    @ConditionalOnBean(value = {CaffeineCacheManager.class, RedisCacheManager.class, RedisCaffeineCacheManager.class})
+    public ShiYuRedisCaffeineCacheConfig shiYuRedisCaffeineCacheConfig(RedisCaffeineCacheManager redisCaffeineCacheManager) {
+        return new ShiYuRedisCaffeineCacheConfig(redisCaffeineCacheManager);
     }
 
 }

@@ -9,7 +9,6 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.shiyu.cloud</groupId>
     <artifactId>shiyu-feign-user</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
@@ -17,12 +16,5 @@
 
     <name>shiyu-feign-user</name>
     <description>shiyu-feign-user</description>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
-    </dependencies>
 
 </project>

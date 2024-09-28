@@ -7,5 +7,5 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(value = "shiyu-user",contextId = "testUser")
 public interface UserTestFeignClient {
     @GetMapping("testUser")
-    String testUser(@RequestParam String id);
+    String testUser(@RequestParam("id") String id);
 }

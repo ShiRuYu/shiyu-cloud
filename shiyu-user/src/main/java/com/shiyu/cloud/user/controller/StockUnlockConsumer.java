@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-@RocketMQMessageListener(topic = RocketMqConstant.STOCK_UNLOCK_TOPIC,consumerGroup = RocketMqConstant.STOCK_UNLOCK_TOPIC)
+@RocketMQMessageListener(topic = RocketMqConstant.SHIYU_DEFAULT_TOPIC,consumerGroup = RocketMqConstant.SHIYU_DEFAULT_TOPIC)
 public class StockUnlockConsumer implements RocketMQListener<List<Integer>> {
 
     @Override

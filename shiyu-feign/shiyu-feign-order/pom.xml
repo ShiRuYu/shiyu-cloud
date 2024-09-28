@@ -9,7 +9,6 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.shiyu.cloud</groupId>
     <artifactId>shiyu-feign-order</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
@@ -17,12 +16,5 @@
 
     <name>shiyu-feign-order</name>
     <description>shiyu-feign-order</description>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
-    </dependencies>
 
 </project>

@@ -1,30 +1,20 @@
-package com.shiyu.cloud.common.cache;
+package com.shiyu.cloud.common.cache.rediscaffeine;
 
-import com.shiyu.cloud.common.cache.rediscaffeine.RedisCaffeineCacheManager;
 import jakarta.annotation.Nonnull;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurer;
-import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.cache.caffeine.CaffeineCacheManager;
 import org.springframework.cache.interceptor.CacheErrorHandler;
 import org.springframework.cache.interceptor.SimpleCacheErrorHandler;
-import org.springframework.context.annotation.DependsOn;
-import org.springframework.data.redis.cache.RedisCacheManager;
 
 /**
  * Spring cache的一些配置，建议组件相关配置都放在相应的configuration类中
  */
-@AutoConfiguration(after = {CaffeineCacheManager.class, RedisCacheManager.class, RedisCaffeineCacheManager.class})
 @RequiredArgsConstructor
-@EnableCaching
-@DependsOn(value = {"redisCaffeineCacheManager"})
-public class RedisCaffeineCacheConfig implements CachingConfigurer {
+public class ShiYuRedisCaffeineCacheConfig implements CachingConfigurer {
 
     private final RedisCaffeineCacheManager redisCaffeineCacheManager;
 

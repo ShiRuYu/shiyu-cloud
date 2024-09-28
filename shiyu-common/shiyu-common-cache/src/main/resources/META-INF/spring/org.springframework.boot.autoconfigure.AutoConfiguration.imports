@@ -1,0 +1,2 @@
+com.shiyu.cloud.common.cache.ShiYuCacheManagerConfig
+com.shiyu.cloud.common.cache.ShiYuRedisConfig

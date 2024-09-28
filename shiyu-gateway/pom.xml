@@ -9,7 +9,6 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.shiyu.cloud</groupId>
     <artifactId>shiyu-gateway</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
@@ -20,18 +19,22 @@
         <dependency>
             <groupId>com.shiyu.cloud</groupId>
             <artifactId>shiyu-common-core</artifactId>
-            <exclusions>
-                <!-- Spring Cloud Gateway 项目中不能使用 spring-boot-starter-web 依赖-->
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-web</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                    <groupId>org.springframework.boot</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.shiyu.cloud</groupId>
+            <artifactId>shiyu-common-web</artifactId>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

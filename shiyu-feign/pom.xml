@@ -9,19 +9,34 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.shiyu.cloud</groupId>
     <artifactId>shiyu-feign</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
     <name>shiyu-feign</name>
     <description>shiyu-feign</description>
-
-    <packaging>pom</packaging>
 
     <modules>
         <module>shiyu-feign-user</module>
         <module>shiyu-feign-order</module>
         <module>shiyu-feign-product</module>
     </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                    <groupId>org.springframework.boot</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.shiyu.cloud</groupId>
+            <artifactId>shiyu-common-web</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

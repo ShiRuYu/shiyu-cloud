@@ -8,5 +8,5 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface ProductTestFeignClient {
 
     @GetMapping("testProduct")
-    String testProduct(@RequestParam String id);
+    String testProduct(@RequestParam("id") String id);
 }

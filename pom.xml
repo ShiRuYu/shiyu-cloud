@@ -16,12 +16,13 @@
         <module>shiyu-common</module>
         <module>shiyu-feign</module>
         <module>shiyu-gateway</module>
-        <module>shiyu-user</module>
-        <module>shiyu-product</module>
         <module>shiyu-order</module>
+        <module>shiyu-product</module>
+        <module>shiyu-user</module>
     </modules>
 
     <properties>
+        <shiyu.version>0.0.1-SNAPSHOT</shiyu.version>
         <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -42,16 +43,34 @@
 
     </properties>
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.4</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
-
     <!-- 依赖声明 -->
     <dependencyManagement>
         <dependencies>
+
+            <!-- SpringBoot 依赖配置 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- SpringCloud Alibaba 微服务 -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- SpringCloud 微服务 -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
 
             <dependency>
                 <groupId>io.micrometer</groupId>
@@ -128,32 +147,21 @@
                 <version>${druid-spring-boot-3-starter.version}</version>
             </dependency>
 
-            <!-- SpringCloud 微服务 -->
             <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
+                <groupId>com.shiyu.cloud</groupId>
+                <artifactId>shiyu-user</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
             </dependency>
-
-            <!-- SpringCloud Alibaba 微服务 -->
             <dependency>
-                <groupId>com.alibaba.cloud</groupId>
-                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>${spring-cloud-alibaba.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
+                <groupId>com.shiyu.cloud</groupId>
+                <artifactId>shiyu-order</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
             </dependency>
-
-            <!-- SpringBoot 依赖配置 -->
-            <!--<dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>-->
+            <dependency>
+                <groupId>com.shiyu.cloud</groupId>
+                <artifactId>shiyu-product</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
 
             <dependency>
                 <groupId>com.shiyu.cloud</groupId>
@@ -173,6 +181,16 @@
 
             <dependency>
                 <groupId>com.shiyu.cloud</groupId>
+                <artifactId>shiyu-common-cache</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.shiyu.cloud</groupId>
+                <artifactId>shiyu-common-cloud</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.shiyu.cloud</groupId>
                 <artifactId>shiyu-common-core</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
@@ -183,35 +201,15 @@
             </dependency>
             <dependency>
                 <groupId>com.shiyu.cloud</groupId>
-                <artifactId>shiyu-common-cache</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
-            </dependency>
-            <dependency>
-                <groupId>com.shiyu.cloud</groupId>
                 <artifactId>shiyu-common-rocketmq</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
+            <dependency>
+                <groupId>com.shiyu.cloud</groupId>
+                <artifactId>shiyu-common-web</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
 
-            <dependency>
-                <groupId>com.shiyu.cloud</groupId>
-                <artifactId>shiyu-gateway</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
-            </dependency>
-            <dependency>
-                <groupId>com.shiyu.cloud</groupId>
-                <artifactId>shiyu-order</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
-            </dependency>
-            <dependency>
-                <groupId>com.shiyu.cloud</groupId>
-                <artifactId>shiyu-product</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
-            </dependency>
-            <dependency>
-                <groupId>com.shiyu.cloud</groupId>
-                <artifactId>shiyu-user</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
